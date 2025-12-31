@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/assets">
+        <file>TemplateCreator.qml</file>
+    </qresource>
+    <qresource prefix="/components">
+        <file>ComponentLabel.qml</file>
+        <file>ComponentPhoto.qml</file>
+    </qresource>
+</RCC>
