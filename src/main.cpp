@@ -1,6 +1,7 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 #include "src/creatorbase.h"
+#include "src/templatecontainer.h"
 int main(int argc, char *argv[])
 {
     QGuiApplication app(argc, argv);
@@ -13,6 +14,8 @@ int main(int argc, char *argv[])
     //register
     qmlRegisterSingletonInstance<CreatorBase>("com.facu.utils", 1, 0, "CreatorBases", creatorBase);
     qmlRegisterType<BaseTemplate>("com.facu.utils", 1, 0, "BaseTemplate");
+    qmlRegisterType<TemplateContainer>("com.facu.utils", 1, 0, "TemplateContainer");
+
 
 
     QObject::connect(

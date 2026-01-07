@@ -7,8 +7,9 @@ BaseTemplate {
     //despues borrar todo lo relacionado al Listmodel de qml
     //se tiene que ajustar a las cosas que se aniaden
     property alias exampleModel:examplemodel
+    property alias enabledButt:deleteButton.enabled
     id:root
-    anchors.fill: parent
+    width: 150; height: 180
     ListModel{
         id:examplemodel
         ListElement{
@@ -22,14 +23,23 @@ BaseTemplate {
             type:"imager"
         }
     }
+
+
     //Tengo que poder crear mas de este Rectangle pero desde C++.
     Rectangle{
         id:base
-        width: 180; height: 200
+        width: parent.width; height: parent.height
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         color:"cyan"
         clip:true
+        Text{
+            id:aidi
+            anchors.top:parent.top
+            anchors.right: parent.right
+            height: 8
+            text:root.ide
+        }
         ListView {
             anchors.fill: parent
             model: examplemodel
@@ -47,6 +57,17 @@ BaseTemplate {
                 }
             }
 
+        }
+        Button{
+            id:deleteButton
+            enabled:false
+            anchors{
+                right: parent.right
+                bottom: parent.bottom
+            }
+            height: 10
+            width: 10
+            onClicked: CreatorBases.borrarItem(root.ide)
         }
     }
 

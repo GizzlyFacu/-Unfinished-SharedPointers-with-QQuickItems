@@ -8,6 +8,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
 find_package(Qt6 REQUIRED COMPONENTS Quick)
+find_package(Qt6 REQUIRED COMPONENTS Quick)
 
 qt_standard_project_setup(REQUIRES 6.8)
 
@@ -24,10 +25,15 @@ qt_add_qml_module(appPortfolioExtender
     SOURCES
         ./src/basetemplate.cpp ./src/basetemplate.h
         ./src/creatorbase.cpp ./src/creatorbase.h
+        ./src/templatecontainer.cpp ./src/templatecontainer.h
     RESOURCES
         assets/assets.qrc
         qml/modular/modularQmls.qrc
 
+)
+target_include_directories(appPortfolioExtender
+    PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
@@ -44,6 +50,7 @@ set_target_properties(appPortfolioExtender PROPERTIES
 target_link_libraries(appPortfolioExtender
     PRIVATE Qt6::Quick
 )
+target_link_libraries(appPortfolioExtender PRIVATE Qt6::Quick)
 
 include(GNUInstallDirs)
 install(TARGETS appPortfolioExtender
